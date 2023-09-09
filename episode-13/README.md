@@ -1,70 +1,92 @@
-# Getting Started with Create React App
+این درس درمورد هوک معروف useReducer 
+هست.
+این هوک مثل هوک 
+state هستش.
+یعنی این هوک هم خیلی قشنگ میتونی استیت ها رو مدیریت کنی.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+useReducer same useState.
+when we use useState and then when useReducer?
+اگر یک تابعی داشتی که مقدار چندین استیت رو به طور همزمان مقدارشون رو تغییر میده باید از 
+useReducer
+استفاده کنی.
+یاهم اگر یک آبجکت داریم داریم که به صورت پیچیده هست باید از این هوک استفاده کنیم.
 
-## Available Scripts
+مثال:
 
-In the project directory, you can run:
+ما یک ای پی ای داریم که هر بار درخواست می فرسیتم.
+می خواهیم وقتی که درخواست ما به ای پی ای فرستاده می شود یعنی زمانی که درخواست فچکردن شروع می شود.
+fetch_start: loading = true
+و زمانی که پاسخ موفقیت آمیز به ما رسید
+fetch_success: loading= false
+و زمانی که یک خطایی رخ داد در قسمت لودینگ رو فالس کنه.
+fetch_error
+ما می توانیم این را با استفاده از 
+useState
+انجام بدیم.
 
-### `npm start`
+برای استفاده از 
+fetch_success
+در این مثال ابتدا باید حالت اولیه رو تعرریف کنیم
+ما سه تا state
+داریم
+یکی لودینگ یکی دیتا مون یکی هم ارور
+.
+حالا یک تابع نیاز داریم که این تغییرات رو اعمال کنه
+ ما سه تا وضعیت داریم.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+ تابع 
+ Reducer
+همیشه دوتا ورودی داره.
+(state,action)
+استیت یعنی استیت فعلی
+و اکشن یعنی چیزی که ما به این تابع می فرستیم.
+استیت خودش میاد نیاز نیست ما بهش بدیم ولی ما باید اکشن رو به صورت ورودی بفرستیم.
+اکشن ما میخواهیم به چه صورت باشه؟
+میخواهیم که یک وضعیت روبه ما نشون بده 
+//action ={type: '' , data: ""}
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+حالا چجوری ازش استفاده کنیم؟
+ابتدا باید 
+useReducer
+رو اد کنیم و بعدش 
+دوتا ورودی باید بهش بدیم.
+یکی اسم 
+Reducer
+و بعدی هم حالت اولیه.
+حالا این 
+useReducer
+رو که صدا زدی دوتا خروجی به ما میده یکی 
+state 
+ما هست
+واون یکی چیزی هست که مامی توانیم 
+این state
+رو باهاش عوض کنیم و همیشه اسمش رو 
+dispatch  
+می زاریم.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+======================
+مثال دوم:
+یک فرم داریم، در واقع می آییم اینجا 
+useReducer
+را در قالب یک فرم یاد میگریم.
+    {/*
+    خب یک چیزی میخوایم تا ورودی ها رو هندل کنه 
+    تابع دیسپچ رو صدا میزنیم و ما باید یک اکشن بهش بدیم 
+    اکشن ما اینجا یک ابجت هست که باید یک تایپ بهش بدیم و 
+    یک دیتا
+      
+  */}
 
-### `npm run build`
+برای اینکه به تگ ها تکست اریا دسترسی داشته باشیم میاییم از یک هوک جدید استفاده میکنیم اینجا به نام
+useRef
+در واقع میتوانیم یک جورایی جاوا اسکریپ رو در ری اکت استفاده کنیم.
+خب
+ابتدا یک متغییر تعریف می کنیم.
+بعد از تعریف به صورت یک تگ به همون تکست اریا پاس میدیم.
+حالا در این تکست اریا به تمام اون چیزایی که جاوا اسکریپت دسترسی داشتیم الان دسترسی دارم.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1.useContext
+first you have to create a context then you have to create a prvider.
+2.useReducer

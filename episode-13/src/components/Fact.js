@@ -15,7 +15,7 @@ export const Fact=()=>{
  // fetch_error   : loading: false
  //               : error  : true
 
- const [state , dispatch] = useReducer(factReducer , initialState)
+    const [state , dispatch] = useReducer(factReducer , initialState)
 
     const handelFetch =() => {
         dispatch({type : ACTION_TYPES.Fetch_start})

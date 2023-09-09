@@ -13,6 +13,7 @@ export const Form = () => {
   const tagRef = useRef();
   const [state, dispatch] = useReducer(formReducer, initialState);
 
+
   const handelInputChange = (event) => {
     dispatch({
       type: "change_input",
@@ -22,13 +23,15 @@ export const Form = () => {
 
   const handelTags = () => {
     const tags = tagRef.current.value.split(",");
+
     console.log(tags ,  tagRef.current.value)
     tags.forEach((t) => {
       dispatch({ type: "add_tag", data: t });
     });
   };
 
-  console.log(state);
+  // console.log(state);
+
   return (
     <div>
       <form>
@@ -56,6 +59,7 @@ export const Form = () => {
           <option value="shoes">کفش</option>
           <option value="dress">لباس</option>
         </select>
+
         <p>تگ</p>
         <textarea placeholder="tags" ref={tagRef}></textarea>
         <br />
@@ -65,6 +69,7 @@ export const Form = () => {
           return <button key={tag} onClick={()=> dispatch({type :"remove_tag" , data : tag })}>
             {tag}</button>;
         })}
+
         <div style={{ marginTop: "20px" }}>
           <button type="button" onClick={() => dispatch({ type: "increase" })}>
             +
@@ -74,6 +79,7 @@ export const Form = () => {
             -
           </button>
         </div>
+
       </form>
     </div>
   );
